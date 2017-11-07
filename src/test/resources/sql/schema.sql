@@ -1,0 +1,12 @@
+CREATE SCHEMA HARD_KNOCKS;
+
+
+--renew
+CREATE TABLE HARD_KNOCKS.STUDENT(
+  student_id VARCHAR2(9) PRIMARY KEY,
+  first_name VARCHAR2(50) NOT NULL,
+  last_name VARCHAR2(50) NOT NULL,
+  date_of_birth DATE
+);
+
+
