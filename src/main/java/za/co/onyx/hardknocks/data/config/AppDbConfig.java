@@ -16,7 +16,7 @@ import javax.sql.DataSource;
  * Created by milez on 2017/11/06.
  */
 @Configuration
-@PropertySource("classpath:/config/application-${ENV}.properties")
+@PropertySource("classpath:/config/infrastructure-${ENV}.properties")
 public class AppDbConfig {
 
     @Autowired

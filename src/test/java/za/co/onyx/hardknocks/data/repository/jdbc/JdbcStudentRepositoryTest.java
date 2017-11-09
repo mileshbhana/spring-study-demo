@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import za.co.onyx.hardknocks.config.AppConfig;
+import za.co.onyx.hardknocks.config.MyEnvironment;
 import za.co.onyx.hardknocks.model.Student;
 
 /**
@@ -13,22 +14,18 @@ import za.co.onyx.hardknocks.model.Student;
  */
 public class JdbcStudentRepositoryTest {
 
+    ApplicationContext context;
+
     JdbcStudentRepository studentRepository;
-
-    /*
-db.user = hard_knocks
-db.password = hardknocks
-
-     */
 
     @Before
     public void setup() {
         System.setProperty("spring.profiles.active", "dev");
-        System.setProperty("ENV", "dev");
-        ApplicationContext context
-                = new AnnotationConfigApplicationContext(AppConfig.class);
+        System.setProperty("campus.region", "Sandton");
+        context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         studentRepository = context.getBean(JdbcStudentRepository.class);
+
 
     }
 
@@ -38,6 +35,12 @@ db.password = hardknocks
 
         Assert.assertNotNull(student);
 
+    }
+
+    @Test
+    public void testEnv() {
+        MyEnvironment myEnvironment = context.getBean(MyEnvironment.class);
+        System.out.println(myEnvironment);
     }
 
 }
