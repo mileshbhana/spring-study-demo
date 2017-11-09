@@ -15,9 +15,16 @@ public class JdbcStudentRepositoryTest {
 
     JdbcStudentRepository studentRepository;
 
+    /*
+db.user = hard_knocks
+db.password = hardknocks
+
+     */
+
     @Before
     public void setup() {
-        System.setProperty("spring.profiles.active", "local");
+        System.setProperty("spring.profiles.active", "dev");
+        System.setProperty("ENV", "dev");
         ApplicationContext context
                 = new AnnotationConfigApplicationContext(AppConfig.class);
 
